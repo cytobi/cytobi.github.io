@@ -21,6 +21,10 @@ git subtree push --prefix dist origin gh-pages
 ```
 - go into the settings of your repository and under "Pages" set gh-pages as the branch to deploy from
 
+now you're all set up!
+
+remember to repeat the build and subtree commands to update the website
+
 ## contributors
 
 - [cytobi](https://github.com/cytobi)
