@@ -1,7 +1,7 @@
 <template>
     WIP
     <div class="card">
-        <el-button type="button" @click="count++">count is {{ count }}</el-button>
+        <el-button @click="count++">count is {{ count }}</el-button>
     </div>
 </template>
 
