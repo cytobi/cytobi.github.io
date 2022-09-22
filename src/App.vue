@@ -1,7 +1,7 @@
 <template>
-    <hello-world />
+    <page-skeleton />
 </template>
 
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import PageSkeleton from './components/PageSkeleton.vue'
 </script>

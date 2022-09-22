@@ -27,8 +27,4 @@ const count = ref(0)
 .el-main {
     padding: 10px;
 }
-
-.el-button {
-    margin: 10px;
-}
 </style>
