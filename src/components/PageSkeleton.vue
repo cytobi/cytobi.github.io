@@ -20,7 +20,7 @@ const count = ref(0)
 
 <style>
 .el-header {
-    border-bottom: 3px solid #393E46;
+    background-color: var(--secondary-color);
     padding: 10px;
 }
 

@@ -1,7 +1,9 @@
+@use '../color-vars.scss' as *;
+
 @forward 'element-plus/theme-chalk/src/common/var.scss' with (
     $colors: (
         'primary': (
-            'base': #00ADB5,
+            'base': $ctb-primary-color,
         ),
     ));
 
