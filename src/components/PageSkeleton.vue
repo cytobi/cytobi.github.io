@@ -1,19 +1,21 @@
 <template>
     <el-container>
-        <el-header>
+        <el-header v-if="displayHeader">
             <img class="avatar" src="/src/assets/avatar.png" />
             <div class="title">cytobi</div>
         </el-header>
-        <el-main>
-            <router-view></router-view>
-        </el-main>
+        <router-view></router-view>
     </el-container>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed } from 'vue'
 
-const count = ref(0)
+const { path } = defineProps({
+    path: { type: String, required: true }
+})
+
+const displayHeader = computed(() => path !== '/morph')
 </script>
 
 <style>
@@ -22,10 +24,6 @@ const count = ref(0)
     padding: 10px;
     height: 80px;
     padding-left: 5%;
-}
-
-.el-main {
-    padding: 10px;
 }
 
 .avatar {
