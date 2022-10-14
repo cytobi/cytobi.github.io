@@ -5,12 +5,7 @@
             <div class="title">cytobi</div>
         </el-header>
         <el-main>
-            <div>
-                WIP-body
-            </div>
-            <el-button @click="count++" type="primary">
-                count is {{ count }}
-            </el-button>
+            <router-view></router-view>
         </el-main>
     </el-container>
 </template>

@@ -1,9 +1,8 @@
 <template>
-    <page-skeleton />
+    <router-view />
 </template>
 
 <script setup lang="ts">
-import PageSkeleton from './components/PageSkeleton.vue'
 </script>
 
 
