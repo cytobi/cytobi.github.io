@@ -12,9 +12,8 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { useRouter } from 'vue-router'
 
-const router = useRouter()
+const emit = defineEmits(['project'])
 
 var doMorph = true
 
@@ -53,7 +52,7 @@ async function handleClickOnShape(id: number) {
     wrapper?.setAttribute("data-roundness", "0")
     wrapper?.setAttribute("data-config", "0")
     await delay(300)
-    router.push("/projects/" + id)
+    emit('project', id)
 }
 </script>
 
@@ -186,6 +185,10 @@ async function handleClickOnShape(id: number) {
 
 #wrapper[data-config="0"]>.shape {
     background-color: rgba(255, 255, 255, 0);
+    top: 0;
+    height: 100%;
+    left: 0;
+    width: 100%;
 }
 
 #wrapper[data-config="1"]>.shape:nth-child(1) {

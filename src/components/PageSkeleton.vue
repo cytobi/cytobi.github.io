@@ -4,18 +4,27 @@
             <img class="avatar" src="/src/assets/avatar.png" />
             <div class="title">cytobi</div>
         </el-header>
-        <router-view></router-view>
+        <wip-body v-if="page === 'WipBody'" />
+        <morphing-shapes @project="(n) => { toProject(n) }" v-if="page === 'MorphingShapes'" />
     </el-container>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
+import MorphingShapes from './MorphingShapes.vue';
+import WipBody from './WipBody.vue';
 
-const { path } = defineProps({
-    path: { type: String, required: true }
-})
+var page = "MorphingShapes"
+var displayHeader = computed(() => page !== "MorphingShapes")
 
-const displayHeader = computed(() => path !== '/morph')
+function toProject(id: number) {
+    page = "WipBody"
+    updateHeader()
+}
+
+function updateHeader() {
+    displayHeader = computed(() => page !== "MorphingShapes")
+}
 </script>
 
 <style>
