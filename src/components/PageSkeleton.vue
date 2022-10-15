@@ -5,7 +5,7 @@
             <div class="title">cytobi</div>
         </el-header>
         <wip-body v-if="page === 'WipBody'" />
-        <morphing-shapes @project="(n) => { toProject(n) }" v-if="page === 'MorphingShapes'" />
+        <morphing-shapes @page="(n) => { toProject(n) }" v-if="page === 'MorphingShapes'" />
     </el-container>
 </template>
 
@@ -18,7 +18,9 @@ const page = ref("MorphingShapes")
 var displayHeader = computed(() => page.value !== "MorphingShapes")
 
 function toProject(id: number) {
-    page.value = "WipBody"
+    if (id === 0) {
+        page.value = "WipBody"
+    }
     updateHeader()
 }
 

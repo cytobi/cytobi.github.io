@@ -1,11 +1,11 @@
 <template>
     <div id="fullpage">
         <div id="wrapper">
-            <div class="shape" @click="handleClickOnShape(1)">ABC</div>
-            <div class="shape" @click="handleClickOnShape(2)">DEF</div>
-            <div class="shape" @click="handleClickOnShape(3)">GHI</div>
-            <div class="shape" @click="handleClickOnShape(4)">JKL</div>
-            <div class="shape" @click="handleClickOnShape(5)">MNO</div>
+            <div class="shape" @click="handleClickOnShape(0)">ABC</div>
+            <div class="shape" @click="handleClickOnShape(1)">DEF</div>
+            <div class="shape" @click="handleClickOnShape(2)">GHI</div>
+            <div class="shape" @click="handleClickOnShape(3)">JKL</div>
+            <div class="shape" @click="handleClickOnShape(4)">MNO</div>
         </div>
     </div>
 </template>
@@ -13,7 +13,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 
-const emit = defineEmits(['project'])
+const emit = defineEmits(['page'])
 
 var doMorph = true
 
@@ -48,11 +48,19 @@ function delay(ms: number) {
 }
 
 async function handleClickOnShape(id: number) {
-    doMorph = !doMorph
-    wrapper?.setAttribute("data-roundness", "0")
-    wrapper?.setAttribute("data-config", "0")
-    await delay(300)
-    emit('project', id)
+    if (doMorph) { //if morphing go to view state
+        wrapper?.setAttribute("data-roundness", "0")
+        wrapper?.setAttribute("data-config", "0")
+        wrapper?.children[id].setAttribute("data-selected", "true")
+        wrapper?.children[id].setAttribute("data-zindex", "true")
+    } else { //if view state go to default state
+        wrapper?.setAttribute("data-roundness", "1")
+        wrapper?.setAttribute("data-config", "1")
+        wrapper?.children[id].setAttribute("data-selected", "false")
+        await delay(500) //wait for animation to finish
+        wrapper?.children[id].setAttribute("data-zindex", "false")
+    }
+    doMorph = !doMorph //toggle morphing state
 }
 </script>
 
@@ -116,6 +124,20 @@ async function handleClickOnShape(id: number) {
     top: 40%;
     background-color: #e76f51;
 }
+
+
+#wrapper>.shape[data-selected="true"] {
+    height: 100%;
+    width: 100%;
+    left: 0%;
+    top: 0%;
+    color: var(--text-color);
+}
+
+#wrapper>.shape[data-zindex="true"] {
+    z-index: 1;
+}
+
 
 #wrapper[data-roundness="0"]>.shape {
     border-radius: 0;
@@ -184,7 +206,6 @@ async function handleClickOnShape(id: number) {
 
 
 #wrapper[data-config="0"]>.shape {
-    background-color: rgba(255, 255, 255, 0);
     top: 0;
     height: 100%;
     left: 0;
@@ -378,7 +399,6 @@ async function handleClickOnShape(id: number) {
 
 
 #wrapper>.shape:hover {
-    background-color: var(--secondary-color);
     color: var(--text-color);
 }
 </style>
