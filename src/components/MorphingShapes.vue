@@ -1,11 +1,46 @@
 <template>
     <div id="fullpage">
         <div id="wrapper">
-            <div class="shape" @click="handleClickOnShape(0)">ABC</div>
-            <div class="shape" @click="handleClickOnShape(1)">DEF</div>
-            <div class="shape" @click="handleClickOnShape(2)">GHI</div>
-            <div class="shape" @click="handleClickOnShape(3)">JKL</div>
-            <div class="shape" @click="handleClickOnShape(4)">MNO</div>
+            <div class="shape" @click="handleClickOnShape(0)">
+                <div class="content">
+                    BLOG
+                    <div class="buttonwrapper">
+                        <el-button class="button" @click="goToPage(0)">go to blog</el-button>
+                    </div>
+                </div>
+            </div>
+            <div class="shape" @click="handleClickOnShape(1)">
+                <div class="content">
+                    PROJECTS
+                    <div class="buttonwrapper">
+                        <el-button class="button">go to projects</el-button>
+                    </div>
+                </div>
+            </div>
+            <div class="shape" @click="handleClickOnShape(2)">
+                <div class="content">
+                    WEBAPPS
+                    <div class="buttonwrapper">
+                        <el-button class="button">go to webapps</el-button>
+                    </div>
+                </div>
+            </div>
+            <div class="shape" @click="handleClickOnShape(3)">
+                <div class="content">
+                    PLACEHOLDER
+                    <div class="buttonwrapper">
+                        <el-button class="button">placeholder</el-button>
+                    </div>
+                </div>
+            </div>
+            <div class="shape" @click="handleClickOnShape(4)">
+                <div class="content">
+                    ABOUT ME
+                    <div class="buttonwrapper">
+                        <el-button class="button">more about me</el-button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -62,6 +97,10 @@ async function handleClickOnShape(id: number) {
     }
     doMorph = !doMorph //toggle morphing state
 }
+
+function goToPage(id: number) {
+    emit('page', id)
+}
 </script>
 
 <style>
@@ -85,13 +124,14 @@ async function handleClickOnShape(id: number) {
     height: 60%;
     width: 20%;
     position: absolute;
-    transition: left, top, height, width, border-radius, background-color, color;
+    transition: left, top, height, width, border-radius, background-color, color, font-size;
     transition-duration: 500ms;
     transition-timing-function: ease-in-out;
     color: rgba(255, 255, 255, 0);
     font-size: 20rem;
     font-weight: bold;
     overflow: hidden;
+    white-space: nowrap;
 }
 
 
@@ -132,6 +172,7 @@ async function handleClickOnShape(id: number) {
     left: 0%;
     top: 0%;
     color: var(--text-color);
+    font-size: 8rem;
 }
 
 #wrapper>.shape[data-zindex="true"] {
@@ -400,5 +441,25 @@ async function handleClickOnShape(id: number) {
 
 #wrapper>.shape:hover {
     color: var(--text-color);
+}
+
+.content {
+    padding-left: 1rem;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.buttonwrapper {
+    position: relative;
+    top: -8rem;
+    width: 100%;
+    height: 100%;
+}
+
+.button {
+    position: absolute;
+    bottom: 4rem;
+    right: 4rem;
 }
 </style>
