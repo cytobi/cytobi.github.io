@@ -14,16 +14,16 @@ import { computed, ref } from 'vue'
 import MorphingShapes from './MorphingShapes.vue';
 import WipBody from './WipBody.vue';
 
-var page = "MorphingShapes"
-var displayHeader = computed(() => page !== "MorphingShapes")
+const page = ref("MorphingShapes")
+var displayHeader = computed(() => page.value !== "MorphingShapes")
 
 function toProject(id: number) {
-    page = "WipBody"
+    page.value = "WipBody"
     updateHeader()
 }
 
 function updateHeader() {
-    displayHeader = computed(() => page !== "MorphingShapes")
+    displayHeader = computed(() => page.value !== "MorphingShapes")
 }
 </script>
 
