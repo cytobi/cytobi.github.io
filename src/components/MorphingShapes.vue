@@ -13,7 +13,7 @@
                 <div class="content">
                     PROJECTS
                     <div class="buttonwrapper">
-                        <el-button class="button">go to projects</el-button>
+                        <el-button class="button" @click="goToPage(1)">go to projects</el-button>
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                 <div class="content">
                     WEBAPPS
                     <div class="buttonwrapper">
-                        <el-button class="button">go to webapps</el-button>
+                        <el-button class="button" @click="goToPage(2)">go to webapps</el-button>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                 <div class="content">
                     PLACEHOLDER
                     <div class="buttonwrapper">
-                        <el-button class="button">placeholder</el-button>
+                        <el-button class="button" @click="goToPage(3)">placeholder</el-button>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                 <div class="content">
                     ABOUT ME
                     <div class="buttonwrapper">
-                        <el-button class="button">more about me</el-button>
+                        <el-button class="button" @click="goToPage(4)">more about me</el-button>
                     </div>
                 </div>
             </div>
