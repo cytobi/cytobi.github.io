@@ -54,7 +54,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { Memo } from '@element-plus/icons-vue'
-import { ElNotification } from 'element-plus'
 
 const emit = defineEmits(['page'])
 
@@ -87,15 +86,6 @@ setInterval(() => {
         wrapper.setAttribute("data-config", newConfig.toString())
     }
 }, 3000)
-
-setInterval(() => {
-    ElNotification({
-        title: 'Tip',
-        message: 'Try clicking on the shapes!',
-        type: 'info',
-        showClose: false,
-    })
-}, 30000)
 
 function delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms))

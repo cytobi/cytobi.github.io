@@ -19,6 +19,7 @@
 import { computed, ref } from 'vue'
 
 import { House } from '@element-plus/icons-vue'
+import { ElNotification } from 'element-plus'
 
 import MorphingShapes from './MorphingShapes.vue';
 import WipBody from './WipBody.vue';
@@ -54,6 +55,17 @@ function goHome() {
     page.value = "MorphingShapes"
     updateHeader()
 }
+
+setInterval(() => {
+    if (page.value === "MorphingShapes") {
+        ElNotification({
+            title: 'Tip',
+            message: 'Try clicking on the shapes!',
+            type: 'info',
+            showClose: false,
+        })
+    }
+}, 30000)
 </script>
 
 <style>
