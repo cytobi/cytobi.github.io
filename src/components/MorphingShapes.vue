@@ -6,7 +6,10 @@
                     BLOG
                     <div class="morph-non-title" v-if="nonTitleVisible">
                         <div class="morph-description">
-                            <p>I have a tumblr blog where I occasionally post all sorts of stuff :) </p>
+                            <p>I have a tumblr blog where I occasionally post stuff :)</p>
+                            <p>You'll find posts on pretty much anything I like on there: <br />
+                                coding, music, movies, video games, astronomy & space stuff, <br />
+                                a few memes, observations about life, etc</p>
                         </div>
                         <el-button class="morph-button" @click="goToPage(0)" :icon="Memo">go to blog</el-button>
                     </div>
@@ -475,6 +478,11 @@ function goToPage(id: number) {
 #morph-wrapper>.morph-shape:nth-child(1)>.morph-content>.morph-non-title>.morph-button {
     background-color: var(--morph-color-1);
     color: var(--text-color);
+    border-color: var(--text-color);
+}
+
+#morph-wrapper>.morph-shape:nth-child(1)>.morph-content>.morph-non-title>.morph-button:hover {
+    border-color: var(--bg-color);
 }
 
 #morph-wrapper>.morph-shape:nth-child(2)>.morph-content>.morph-non-title>.morph-button {
@@ -494,7 +502,7 @@ function goToPage(id: number) {
 }
 
 .morph-description {
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: normal;
     position: relative;
     top: -0.5rem;

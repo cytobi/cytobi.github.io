@@ -21,9 +21,12 @@ var displayHeader = computed(() => page.value !== "MorphingShapes")
 
 function toProject(id: number) {
     if (id === 0) {
-        page.value = "WipBody"
+        window.location.href = 'https://cytobi.tumblr.com/';
     }
     if (id === 1) {
+        page.value = "WipBody"
+    }
+    if (id === 2) {
         page.value = "MouseSpeed"
     }
     updateHeader()
