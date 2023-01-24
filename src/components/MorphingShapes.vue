@@ -4,15 +4,18 @@
             <div class="morph-shape" @click="handleClickOnShape(0)">
                 <div class="morph-content">
                     BLOG
-                    <div class="morph-buttonwrapper">
-                        <el-button class="morph-button" @click="goToPage(0)">go to blog</el-button>
+                    <div class="morph-non-title" v-if="nonTitleVisible">
+                        <div class="morph-description">
+                            <p>I have a tumblr blog where I occasionally post all sorts of stuff :) </p>
+                        </div>
+                        <el-button class="morph-button" @click="goToPage(0)" :icon="Memo">go to blog</el-button>
                     </div>
                 </div>
             </div>
             <div class="morph-shape" @click="handleClickOnShape(1)">
                 <div class="morph-content">
                     PROJECTS
-                    <div class="morph-buttonwrapper">
+                    <div class="morph-non-title" v-if="nonTitleVisible">
                         <el-button class="morph-button" @click="goToPage(1)">go to projects</el-button>
                     </div>
                 </div>
@@ -20,7 +23,7 @@
             <div class="morph-shape" @click="handleClickOnShape(2)">
                 <div class="morph-content">
                     WEBAPPS
-                    <div class="morph-buttonwrapper">
+                    <div class="morph-non-title" v-if="nonTitleVisible">
                         <el-button class="morph-button" @click="goToPage(2)">go to webapps</el-button>
                     </div>
                 </div>
@@ -28,7 +31,7 @@
             <div class="morph-shape" @click="handleClickOnShape(3)">
                 <div class="morph-content">
                     PLACEHOLDER
-                    <div class="morph-buttonwrapper">
+                    <div class="morph-non-title" v-if="nonTitleVisible">
                         <el-button class="morph-button" @click="goToPage(3)">placeholder</el-button>
                     </div>
                 </div>
@@ -36,7 +39,7 @@
             <div class="morph-shape" @click="handleClickOnShape(4)">
                 <div class="morph-content">
                     ABOUT ME
-                    <div class="morph-buttonwrapper">
+                    <div class="morph-non-title" v-if="nonTitleVisible">
                         <el-button class="morph-button" @click="goToPage(4)">more about me</el-button>
                     </div>
                 </div>
@@ -46,11 +49,14 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
+import { Memo } from '@element-plus/icons-vue'
 
 const emit = defineEmits(['page'])
 
 var doMorph = true
+
+var nonTitleVisible = ref(false)
 
 var wrapper = document.getElementById("morph-wrapper")
 
@@ -88,14 +94,18 @@ async function handleClickOnShape(id: number) {
         wrapper?.setAttribute("data-config", "0")
         wrapper?.children[id].setAttribute("data-selected", "true")
         wrapper?.children[id].setAttribute("data-zindex", "true")
+        doMorph = false
+        await delay(500) //wait for animation to finish
+        nonTitleVisible.value = true
     } else { //if view state go to default state
         wrapper?.setAttribute("data-roundness", "1")
         wrapper?.setAttribute("data-config", "1")
         wrapper?.children[id].setAttribute("data-selected", "false")
+        nonTitleVisible.value = false
         await delay(500) //wait for animation to finish
         wrapper?.children[id].setAttribute("data-zindex", "false")
+        doMorph = true
     }
-    doMorph = !doMorph //toggle morphing state
 }
 
 function goToPage(id: number) {
@@ -110,6 +120,11 @@ function goToPage(id: number) {
     /* 99vh to avoid scroll bar */
     height: 99vh;
     width: 100vw;
+    --morph-color-1: #264653;
+    --morph-color-2: #2a9d8f;
+    --morph-color-3: #e9c46a;
+    --morph-color-4: #f4a261;
+    --morph-color-5: #e76f51;
 }
 
 
@@ -138,31 +153,31 @@ function goToPage(id: number) {
 #morph-wrapper>.morph-shape:nth-child(1) {
     left: 0%;
     top: 0%;
-    background-color: #264653;
+    background-color: var(--morph-color-1);
 }
 
 #morph-wrapper>.morph-shape:nth-child(2) {
     left: 20%;
     top: 10%;
-    background-color: #2a9d8f;
+    background-color: var(--morph-color-2);
 }
 
 #morph-wrapper>.morph-shape:nth-child(3) {
     left: 40%;
     top: 20%;
-    background-color: #e9c46a;
+    background-color: var(--morph-color-3);
 }
 
 #morph-wrapper>.morph-shape:nth-child(4) {
     left: 60%;
     top: 30%;
-    background-color: #f4a261;
+    background-color: var(--morph-color-4);
 }
 
 #morph-wrapper>.morph-shape:nth-child(5) {
     left: 80%;
     top: 40%;
-    background-color: #e76f51;
+    background-color: var(--morph-color-5);
 }
 
 
@@ -450,16 +465,38 @@ function goToPage(id: number) {
     position: relative;
 }
 
-.morph-buttonwrapper {
-    position: relative;
-    top: -8rem;
-    width: 100%;
-    height: 100%;
-}
-
 .morph-button {
     position: absolute;
     bottom: 4rem;
-    right: 4rem;
+    right: 7rem;
+    scale: 200%;
+}
+
+#morph-wrapper>.morph-shape:nth-child(1)>.morph-content>.morph-non-title>.morph-button {
+    background-color: var(--morph-color-1);
+    color: var(--text-color);
+}
+
+#morph-wrapper>.morph-shape:nth-child(2)>.morph-content>.morph-non-title>.morph-button {
+    background-color: var(--morph-color-2);
+}
+
+#morph-wrapper>.morph-shape:nth-child(3)>.morph-content>.morph-non-title>.morph-button {
+    background-color: var(--morph-color-3);
+}
+
+#morph-wrapper>.morph-shape:nth-child(4)>.morph-content>.morph-non-title>.morph-button {
+    background-color: var(--morph-color-4);
+}
+
+#morph-wrapper>.morph-shape:nth-child(5)>.morph-content>.morph-non-title>.morph-button {
+    background-color: var(--morph-color-5);
+}
+
+.morph-description {
+    font-size: 1rem;
+    font-weight: normal;
+    position: relative;
+    top: -0.5rem;
 }
 </style>
