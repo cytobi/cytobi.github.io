@@ -1,7 +1,12 @@
 <template>
     <el-container>
         <el-header v-if="displayHeader">
-            <img class="avatar" src="/src/assets/avatar.png" @click="goHome()" />
+            <el-button class="home-button" @click="goHome()">
+                <el-icon class="home-icon">
+                    <House />
+                </el-icon>
+            </el-button>
+            <img class="avatar" src="/src/assets/avatar.png" @click="toProject(4)" />
             <div class="title">cytobi</div>
         </el-header>
         <wip-body v-if="page === 'WipBody'" />
@@ -12,6 +17,9 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+
+import { House } from '@element-plus/icons-vue'
+
 import MorphingShapes from './MorphingShapes.vue';
 import WipBody from './WipBody.vue';
 import MouseSpeed from './MouseSpeed.vue';
@@ -28,6 +36,12 @@ function toProject(id: number) {
     }
     if (id === 2) {
         page.value = "MouseSpeed"
+    }
+    if (id === 3) {
+        page.value = "Placeholder"
+    }
+    if (id === 4) {
+        page.value = "AboutMe"
     }
     updateHeader()
 }
@@ -64,5 +78,25 @@ function goHome() {
 
     display: inline;
     position: absolute;
+}
+
+.home-button {
+    background-color: var(--secondary-color);
+    border: 0px;
+    border-left: 2px solid var(--bg-color);
+    border-radius: 0;
+    height: 76px;
+    aspect-ratio: 1;
+    position: absolute;
+    right: 0;
+    top: 2px;
+    color: var(--primary-color);
+    font-size: xx-large;
+}
+
+.home-button:hover {
+    background-color: var(--secondary-color);
+    border: 0px;
+    border-left: 2px solid var(--primary-color);
 }
 </style>

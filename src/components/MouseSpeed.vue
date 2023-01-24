@@ -17,7 +17,7 @@
             You achieved an average speed of <div class="highlighted-text">{{ averageSpeed }} pixels/second</div>
         </div>
         <div class="result-dialog-element">
-            That is {{ Math.round((averageSpeed / screenWidth) * 1000) / 1000}} times the width of your screen per
+            That is {{ Math.round((averageSpeed / screenWidth) * 1000) / 1000 }} times the width of your screen per
             second
         </div>
         <div class="gap-1rem"></div>
@@ -96,20 +96,20 @@ const startSpeedTest = () => {
     width: 80vmin;
     font-size: 4rem;
     background-color: var(--bg-color);
-    border: 2px solid var(--primary-color);
+    border: 2px solid var(--secondary-color);
     border-radius: 4rem;
     color: var(--text-color);
 }
 
 .start-speedtest-button:hover {
-    background-color: var(--secondary-color);
+    border-color: var(--primary-color);
 }
 
 .running-speedtest-button {
     aspect-ratio: 1.618;
     width: 80vmin;
     font-size: 4rem;
-    background-color: var(--secondary-color);
+    background-color: var(--bg-color);
     border: 2px solid var(--primary-color);
     color: var(--text-color);
     border-radius: 4rem;
@@ -118,6 +118,8 @@ const startSpeedTest = () => {
 .result-dialog {
     background-color: var(--bg-color);
     border: 2px solid var(--primary-color);
+    height: 14rem;
+    width: 30rem;
 }
 
 .result-dialog-element {
