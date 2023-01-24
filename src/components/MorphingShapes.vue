@@ -1,43 +1,43 @@
 <template>
-    <div id="fullpage">
-        <div id="wrapper">
-            <div class="shape" @click="handleClickOnShape(0)">
-                <div class="content">
+    <div id="morph-fullpage">
+        <div id="morph-wrapper">
+            <div class="morph-shape" @click="handleClickOnShape(0)">
+                <div class="morph-content">
                     BLOG
-                    <div class="buttonwrapper">
-                        <el-button class="button" @click="goToPage(0)">go to blog</el-button>
+                    <div class="morph-buttonwrapper">
+                        <el-button class="morph-button" @click="goToPage(0)">go to blog</el-button>
                     </div>
                 </div>
             </div>
-            <div class="shape" @click="handleClickOnShape(1)">
-                <div class="content">
+            <div class="morph-shape" @click="handleClickOnShape(1)">
+                <div class="morph-content">
                     PROJECTS
-                    <div class="buttonwrapper">
-                        <el-button class="button" @click="goToPage(1)">go to projects</el-button>
+                    <div class="morph-buttonwrapper">
+                        <el-button class="morph-button" @click="goToPage(1)">go to projects</el-button>
                     </div>
                 </div>
             </div>
-            <div class="shape" @click="handleClickOnShape(2)">
-                <div class="content">
+            <div class="morph-shape" @click="handleClickOnShape(2)">
+                <div class="morph-content">
                     WEBAPPS
-                    <div class="buttonwrapper">
-                        <el-button class="button" @click="goToPage(2)">go to webapps</el-button>
+                    <div class="morph-buttonwrapper">
+                        <el-button class="morph-button" @click="goToPage(2)">go to webapps</el-button>
                     </div>
                 </div>
             </div>
-            <div class="shape" @click="handleClickOnShape(3)">
-                <div class="content">
+            <div class="morph-shape" @click="handleClickOnShape(3)">
+                <div class="morph-content">
                     PLACEHOLDER
-                    <div class="buttonwrapper">
-                        <el-button class="button" @click="goToPage(3)">placeholder</el-button>
+                    <div class="morph-buttonwrapper">
+                        <el-button class="morph-button" @click="goToPage(3)">placeholder</el-button>
                     </div>
                 </div>
             </div>
-            <div class="shape" @click="handleClickOnShape(4)">
-                <div class="content">
+            <div class="morph-shape" @click="handleClickOnShape(4)">
+                <div class="morph-content">
                     ABOUT ME
-                    <div class="buttonwrapper">
-                        <el-button class="button" @click="goToPage(4)">more about me</el-button>
+                    <div class="morph-buttonwrapper">
+                        <el-button class="morph-button" @click="goToPage(4)">more about me</el-button>
                     </div>
                 </div>
             </div>
@@ -52,10 +52,10 @@ const emit = defineEmits(['page'])
 
 var doMorph = true
 
-var wrapper = document.getElementById("wrapper")
+var wrapper = document.getElementById("morph-wrapper")
 
 onMounted(() => {
-    wrapper = document.getElementById("wrapper")
+    wrapper = document.getElementById("morph-wrapper")
 })
 
 const randomIntBetween = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1)) + min
@@ -104,7 +104,7 @@ function goToPage(id: number) {
 </script>
 
 <style>
-#fullpage {
+#morph-fullpage {
     display: grid;
     place-items: center;
     /* 99vh to avoid scroll bar */
@@ -113,14 +113,14 @@ function goToPage(id: number) {
 }
 
 
-#wrapper {
+#morph-wrapper {
     aspect-ratio: 1.618;
     width: 80vmin;
     position: relative;
 }
 
 
-#wrapper>.shape {
+#morph-wrapper>.morph-shape {
     height: 60%;
     width: 20%;
     position: absolute;
@@ -135,38 +135,38 @@ function goToPage(id: number) {
 }
 
 
-#wrapper>.shape:nth-child(1) {
+#morph-wrapper>.morph-shape:nth-child(1) {
     left: 0%;
     top: 0%;
     background-color: #264653;
 }
 
-#wrapper>.shape:nth-child(2) {
+#morph-wrapper>.morph-shape:nth-child(2) {
     left: 20%;
     top: 10%;
     background-color: #2a9d8f;
 }
 
-#wrapper>.shape:nth-child(3) {
+#morph-wrapper>.morph-shape:nth-child(3) {
     left: 40%;
     top: 20%;
     background-color: #e9c46a;
 }
 
-#wrapper>.shape:nth-child(4) {
+#morph-wrapper>.morph-shape:nth-child(4) {
     left: 60%;
     top: 30%;
     background-color: #f4a261;
 }
 
-#wrapper>.shape:nth-child(5) {
+#morph-wrapper>.morph-shape:nth-child(5) {
     left: 80%;
     top: 40%;
     background-color: #e76f51;
 }
 
 
-#wrapper>.shape[data-selected="true"] {
+#morph-wrapper>.morph-shape[data-selected="true"] {
     height: 100%;
     width: 100%;
     left: 0%;
@@ -175,139 +175,139 @@ function goToPage(id: number) {
     font-size: 8rem;
 }
 
-#wrapper>.shape[data-zindex="true"] {
+#morph-wrapper>.morph-shape[data-zindex="true"] {
     z-index: 1;
 }
 
 
-#wrapper[data-roundness="0"]>.shape {
+#morph-wrapper[data-roundness="0"]>.morph-shape {
     border-radius: 0;
 }
 
-#wrapper[data-roundness="1"]>.shape {
+#morph-wrapper[data-roundness="1"]>.morph-shape {
     border-radius: 0;
 }
 
-#wrapper[data-roundness="2"]>.shape {
+#morph-wrapper[data-roundness="2"]>.morph-shape {
     border-radius: 2rem;
 }
 
-#wrapper[data-roundness="3"]>.shape {
+#morph-wrapper[data-roundness="3"]>.morph-shape {
     border-radius: 4rem;
 }
 
-#wrapper[data-roundness="4"]>.shape {
+#morph-wrapper[data-roundness="4"]>.morph-shape {
     border-radius: 8rem;
 }
 
 
-#wrapper[data-roundness="5"]>.shape:nth-child(1) {
+#morph-wrapper[data-roundness="5"]>.morph-shape:nth-child(1) {
     border-bottom-left-radius: 8rem;
 }
 
-#wrapper[data-roundness="5"]>.shape:nth-child(2) {
+#morph-wrapper[data-roundness="5"]>.morph-shape:nth-child(2) {
     border-top-right-radius: 8rem;
 }
 
-#wrapper[data-roundness="5"]>.shape:nth-child(3) {
+#morph-wrapper[data-roundness="5"]>.morph-shape:nth-child(3) {
     border-radius: 8rem;
 }
 
-#wrapper[data-roundness="5"]>.shape:nth-child(4) {
+#morph-wrapper[data-roundness="5"]>.morph-shape:nth-child(4) {
     border-bottom-right-radius: 8rem;
     border-top-left-radius: 8rem;
 }
 
-#wrapper[data-roundness="5"]>.shape:nth-child(5) {
+#morph-wrapper[data-roundness="5"]>.morph-shape:nth-child(5) {
     border-top-right-radius: 8rem;
     border-top-left-radius: 8rem;
 }
 
 
-#wrapper[data-roundness="6"]>.shape:nth-child(1) {
+#morph-wrapper[data-roundness="6"]>.morph-shape:nth-child(1) {
     border-bottom-left-radius: 4rem;
     border-top-right-radius: 4rem;
 }
 
-#wrapper[data-roundness="6"]>.shape:nth-child(2) {
+#morph-wrapper[data-roundness="6"]>.morph-shape:nth-child(2) {
     border-bottom-left-radius: 8rem;
 }
 
-#wrapper[data-roundness="6"]>.shape:nth-child(3) {
+#morph-wrapper[data-roundness="6"]>.morph-shape:nth-child(3) {
     border-top-right-radius: 4rem;
 }
 
-#wrapper[data-roundness="6"]>.shape:nth-child(4) {
+#morph-wrapper[data-roundness="6"]>.morph-shape:nth-child(4) {
     border-top-left-radius: 16rem;
 }
 
-#wrapper[data-roundness="6"]>.shape:nth-child(5) {
+#morph-wrapper[data-roundness="6"]>.morph-shape:nth-child(5) {
     border-top-left-radius: 8rem;
 }
 
 
-#wrapper[data-config="0"]>.shape {
+#morph-wrapper[data-config="0"]>.morph-shape {
     top: 0;
     height: 100%;
     left: 0;
     width: 100%;
 }
 
-#wrapper[data-config="1"]>.shape:nth-child(1) {
+#morph-wrapper[data-config="1"]>.morph-shape:nth-child(1) {
     top: 0%;
     height: 60%;
 }
 
-#wrapper[data-config="1"]>.shape:nth-child(2) {
+#morph-wrapper[data-config="1"]>.morph-shape:nth-child(2) {
     top: 10%;
     height: 60%;
 }
 
-#wrapper[data-config="1"]>.shape:nth-child(3) {
+#morph-wrapper[data-config="1"]>.morph-shape:nth-child(3) {
     top: 20%;
     height: 60%;
 }
 
-#wrapper[data-config="1"]>.shape:nth-child(4) {
+#morph-wrapper[data-config="1"]>.morph-shape:nth-child(4) {
     top: 30%;
     height: 60%;
 }
 
-#wrapper[data-config="1"]>.shape:nth-child(5) {
+#morph-wrapper[data-config="1"]>.morph-shape:nth-child(5) {
     top: 40%;
     height: 60%;
 }
 
 
-#wrapper[data-config="2"]>.shape:nth-child(1) {
+#morph-wrapper[data-config="2"]>.morph-shape:nth-child(1) {
     top: 0%;
     height: 40%;
     left: 0%;
     width: 14%;
 }
 
-#wrapper[data-config="2"]>.shape:nth-child(2) {
+#morph-wrapper[data-config="2"]>.morph-shape:nth-child(2) {
     top: 0%;
     height: 80%;
     left: 14%;
     width: 23%;
 }
 
-#wrapper[data-config="2"]>.shape:nth-child(3) {
+#morph-wrapper[data-config="2"]>.morph-shape:nth-child(3) {
     top: 30%;
     height: 70%;
     left: 37%;
     width: 23%;
 }
 
-#wrapper[data-config="2"]>.shape:nth-child(4) {
+#morph-wrapper[data-config="2"]>.morph-shape:nth-child(4) {
     top: 10%;
     height: 90%;
     left: 60%;
     width: 10%;
 }
 
-#wrapper[data-config="2"]>.shape:nth-child(5) {
+#morph-wrapper[data-config="2"]>.morph-shape:nth-child(5) {
     top: 10%;
     height: 50%;
     left: 70%;
@@ -315,61 +315,61 @@ function goToPage(id: number) {
 }
 
 
-#wrapper[data-config="3"]>.shape:nth-child(1) {
+#morph-wrapper[data-config="3"]>.morph-shape:nth-child(1) {
     top: 40%;
     height: 60%;
 }
 
-#wrapper[data-config="3"]>.shape:nth-child(2) {
+#morph-wrapper[data-config="3"]>.morph-shape:nth-child(2) {
     top: 30%;
     height: 60%;
 }
 
-#wrapper[data-config="3"]>.shape:nth-child(3) {
+#morph-wrapper[data-config="3"]>.morph-shape:nth-child(3) {
     top: 20%;
     height: 60%;
 }
 
-#wrapper[data-config="3"]>.shape:nth-child(4) {
+#morph-wrapper[data-config="3"]>.morph-shape:nth-child(4) {
     top: 10%;
     height: 60%;
 }
 
-#wrapper[data-config="3"]>.shape:nth-child(5) {
+#morph-wrapper[data-config="3"]>.morph-shape:nth-child(5) {
     top: 0%;
     height: 60%;
 }
 
 
-#wrapper[data-config="4"]>.shape:nth-child(1) {
+#morph-wrapper[data-config="4"]>.morph-shape:nth-child(1) {
     top: 0%;
     height: 75%;
     left: 0%;
     width: 30%;
 }
 
-#wrapper[data-config="4"]>.shape:nth-child(2) {
+#morph-wrapper[data-config="4"]>.morph-shape:nth-child(2) {
     top: 30%;
     height: 70%;
     left: 30%;
     width: 20%;
 }
 
-#wrapper[data-config="4"]>.shape:nth-child(3) {
+#morph-wrapper[data-config="4"]>.morph-shape:nth-child(3) {
     top: 0%;
     height: 100%;
     left: 50%;
     width: 50%;
 }
 
-#wrapper[data-config="4"]>.shape:nth-child(4) {
+#morph-wrapper[data-config="4"]>.morph-shape:nth-child(4) {
     top: 50%;
     height: 50%;
     left: 70%;
     width: 30%;
 }
 
-#wrapper[data-config="4"]>.shape:nth-child(5) {
+#morph-wrapper[data-config="4"]>.morph-shape:nth-child(5) {
     top: 75%;
     height: 25%;
     left: 85%;
@@ -377,61 +377,61 @@ function goToPage(id: number) {
 }
 
 
-#wrapper[data-config="5"]>.shape:nth-child(1) {
+#morph-wrapper[data-config="5"]>.morph-shape:nth-child(1) {
     top: 0%;
     height: 40%;
 }
 
-#wrapper[data-config="5"]>.shape:nth-child(2) {
+#morph-wrapper[data-config="5"]>.morph-shape:nth-child(2) {
     top: 0%;
     height: 40%;
 }
 
-#wrapper[data-config="5"]>.shape:nth-child(3) {
+#morph-wrapper[data-config="5"]>.morph-shape:nth-child(3) {
     top: 0%;
     height: 100%;
 }
 
-#wrapper[data-config="5"]>.shape:nth-child(4) {
+#morph-wrapper[data-config="5"]>.morph-shape:nth-child(4) {
     top: 0%;
     height: 40%;
 }
 
-#wrapper[data-config="5"]>.shape:nth-child(5) {
+#morph-wrapper[data-config="5"]>.morph-shape:nth-child(5) {
     top: 0%;
     height: 40%;
 }
 
 
-#wrapper[data-config="6"]>.shape:nth-child(1) {
+#morph-wrapper[data-config="6"]>.morph-shape:nth-child(1) {
     top: 0%;
     height: 40%;
     left: 0%;
     width: 40%;
 }
 
-#wrapper[data-config="6"]>.shape:nth-child(2) {
+#morph-wrapper[data-config="6"]>.morph-shape:nth-child(2) {
     top: 40%;
     height: 60%;
     left: 0%;
     width: 40%;
 }
 
-#wrapper[data-config="6"]>.shape:nth-child(3) {
+#morph-wrapper[data-config="6"]>.morph-shape:nth-child(3) {
     top: 0%;
     height: 100%;
     left: 40%;
     width: 60%;
 }
 
-#wrapper[data-config="6"]>.shape:nth-child(4) {
+#morph-wrapper[data-config="6"]>.morph-shape:nth-child(4) {
     top: 50%;
     height: 50%;
     left: 70%;
     width: 30%;
 }
 
-#wrapper[data-config="6"]>.shape:nth-child(5) {
+#morph-wrapper[data-config="6"]>.morph-shape:nth-child(5) {
     top: 75%;
     height: 25%;
     left: 85%;
@@ -439,25 +439,25 @@ function goToPage(id: number) {
 }
 
 
-#wrapper>.shape:hover {
+#morph-wrapper>.morph-shape:hover {
     color: var(--text-color);
 }
 
-.content {
+.morph-content {
     padding-left: 1rem;
     height: 100%;
     width: 100%;
     position: relative;
 }
 
-.buttonwrapper {
+.morph-buttonwrapper {
     position: relative;
     top: -8rem;
     width: 100%;
     height: 100%;
 }
 
-.button {
+.morph-button {
     position: absolute;
     bottom: 4rem;
     right: 4rem;
