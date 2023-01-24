@@ -7,7 +7,7 @@
                     <div class="morph-non-title" v-if="nonTitleVisible">
                         <div class="morph-description">
                             <p>I have a tumblr blog where I occasionally post stuff :)</p>
-                            <p>You'll find posts on pretty much anything I like on there: <br />
+                            <p>You'll find posts about pretty much anything I like on there: <br />
                                 coding, music, movies, video games, astronomy & space stuff, <br />
                                 a few memes, observations about life, etc</p>
                         </div>

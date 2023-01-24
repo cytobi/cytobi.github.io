@@ -21,9 +21,9 @@ import { computed, ref } from 'vue'
 import { House } from '@element-plus/icons-vue'
 import { ElNotification } from 'element-plus'
 
-import MorphingShapes from './MorphingShapes.vue';
+import MorphingShapes from './menus/MorphingShapes.vue';
 import WipBody from './WipBody.vue';
-import MouseSpeed from './MouseSpeed.vue';
+import MouseSpeed from './webapps/MouseSpeed.vue';
 
 const page = ref("MorphingShapes")
 var displayHeader = computed(() => page.value !== "MorphingShapes")
