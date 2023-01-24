@@ -11,7 +11,8 @@
         </el-header>
         <wip-body v-if="page === 'WipBody'" />
         <mouse-speed v-if="page === 'MouseSpeed'" />
-        <morphing-shapes @page="(n) => { toProject(n) }" v-if="page === 'MorphingShapes'" />
+        <morphing-shapes @page="(n) => { toProject(n) }" @clicked-something="nothingClicked = false"
+            v-if="page === 'MorphingShapes'" />
     </el-container>
 </template>
 
@@ -27,6 +28,8 @@ import MouseSpeed from './webapps/MouseSpeed.vue';
 
 const page = ref("MorphingShapes")
 var displayHeader = computed(() => page.value !== "MorphingShapes")
+
+const nothingClicked = ref(true)
 
 function toProject(id: number) {
     if (id === 0) {
@@ -57,7 +60,7 @@ function goHome() {
 }
 
 setInterval(() => {
-    if (page.value === "MorphingShapes") {
+    if (page.value === "MorphingShapes" && nothingClicked.value) {
         ElNotification({
             title: 'Tip',
             message: 'Try clicking on the shapes!',

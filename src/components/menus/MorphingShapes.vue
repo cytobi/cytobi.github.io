@@ -77,7 +77,7 @@ import { onMounted, ref } from 'vue'
 
 import { Memo, DataLine, Pointer, User, Loading } from '@element-plus/icons-vue'
 
-const emit = defineEmits(['page'])
+const emit = defineEmits(['page', 'clickedSomething'])
 
 var doMorph = true
 
@@ -114,6 +114,7 @@ function delay(ms: number) {
 }
 
 async function handleClickOnShape(id: number) {
+    emit('clickedSomething')
     if (doMorph) { //if morphing go to view state
         wrapper?.setAttribute("data-roundness", "0")
         wrapper?.setAttribute("data-config", "0")
