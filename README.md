@@ -25,6 +25,9 @@ now you're all set up!
 
 remember to repeat the build and subtree commands to update the website
 
+## issues
+i started using issues like a todo list for myself, so they don't always make sense without context. feel free to create an issue though if there is anything.
+
 ## contributors
 
 - [cytobi](https://github.com/cytobi)
