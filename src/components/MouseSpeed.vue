@@ -4,9 +4,12 @@
             <div>start speed test</div>
         </button>
         <button @click="startSpeedTest" class="running-speedtest-button" v-else>
-            <div>
+            <p>
+                {{ timeLeft.toFixed(2) }} seconds left
+            </p>
+            <p>
                 {{ speed }} pixels/second
-            </div>
+            </p>
         </button>
     </div>
     <el-dialog v-model="dialogVisible" width="50%" class="result-dialog">
@@ -53,6 +56,8 @@ const speedUpdateInterval = ref(100) //interval in ms between speed updates
 
 const pythag = (x: number, y: number) => Math.sqrt(x * x + y * y) //pythagorean theorem, also gets rid of negative values
 
+const timeLeft = ref(10) //time left in seconds
+
 document.addEventListener('mousemove', (e) => {
     dist.value += pythag(e.movementX, e.movementY)
 })
@@ -65,12 +70,19 @@ setInterval(() => {
     }
 }, speedUpdateInterval.value)
 
+setInterval(() => {
+    if (running.value) {
+        timeLeft.value = timeLeft.value - 0.01
+    }
+}, 10)
+
 const startSpeedTest = () => {
     running.value = true
     setTimeout(() => { //run test for 10 seconds
         running.value = false
         averageSpeed.value = 0 //reset average speed
         topSpeed.value = 0 //reset top speed
+        timeLeft.value = 10 //reset time left
         speedList.value.forEach((s) => { //calculate average and top speed
             averageSpeed.value += s
             if (s > topSpeed.value) {
