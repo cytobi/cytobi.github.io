@@ -19,7 +19,12 @@
                 <div class="morph-content">
                     PROJECTS
                     <div class="morph-non-title" v-if="nonTitleVisible">
-                        <el-button class="morph-button" @click="goToPage(1)">go to projects</el-button>
+                        <div class="morph-description">
+                            <p>Here you can find some of the projects I have done</p>
+                            <p>At the moment this is empty as I haven't put anything here yet,<br />
+                                but that will hopefully change in the not too far future</p>
+                        </div>
+                        <el-button class="morph-button" @click="goToPage(1)" :icon="DataLine">go to projects</el-button>
                     </div>
                 </div>
             </div>
@@ -27,7 +32,13 @@
                 <div class="morph-content">
                     WEBAPPS
                     <div class="morph-non-title" v-if="nonTitleVisible">
-                        <el-button class="morph-button" @click="goToPage(2)">go to webapps</el-button>
+                        <div class="morph-description">
+                            <p>Here you can find some of the webapps I have made</p>
+                            <p>At the moment there is no menu and it redirects directly to the<br />
+                                single webapp on here (a test how fast you can move your mouse),<br />
+                                but that will hopefully change in the not too far future</p>
+                        </div>
+                        <el-button class="morph-button" @click="goToPage(2)" :icon="Pointer">go to webapps</el-button>
                     </div>
                 </div>
             </div>
@@ -35,7 +46,11 @@
                 <div class="morph-content">
                     PLACEHOLDER
                     <div class="morph-non-title" v-if="nonTitleVisible">
-                        <el-button class="morph-button" @click="goToPage(3)">placeholder</el-button>
+                        <div class="morph-description">
+                            <p>Don't mind me, I'm just a placeholder!</p>
+                            <p>¯\_(ツ)_/¯</p>
+                        </div>
+                        <el-button class="morph-button" @click="goToPage(3)" :icon="Loading">placeholder</el-button>
                     </div>
                 </div>
             </div>
@@ -43,7 +58,13 @@
                 <div class="morph-content">
                     ABOUT ME
                     <div class="morph-non-title" v-if="nonTitleVisible">
-                        <el-button class="morph-button" @click="goToPage(4)">more about me</el-button>
+                        <div class="morph-description">
+                            <p>Hey there,</p>
+                            <p>I'm Tobi, known as cytobi on the internet.<br />
+                                I'm 20 years old, from Germany, go by he/him pronouns (i don't care), <br />
+                                study computer science, like music, sports with boards and video games.</p>
+                        </div>
+                        <el-button class="morph-button" @click="goToPage(4)" :icon="User">more about me</el-button>
                     </div>
                 </div>
             </div>
@@ -53,7 +74,8 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { Memo } from '@element-plus/icons-vue'
+
+import { Memo, DataLine, Pointer, User, Loading } from '@element-plus/icons-vue'
 
 const emit = defineEmits(['page'])
 
@@ -471,7 +493,7 @@ function goToPage(id: number) {
 .morph-button {
     position: absolute;
     bottom: 4rem;
-    right: 7rem;
+    right: 8rem;
     scale: 200%;
 }
 
@@ -485,21 +507,70 @@ function goToPage(id: number) {
     border-color: var(--bg-color);
 }
 
+#morph-wrapper>.morph-shape:nth-child(1)>.morph-content>.morph-non-title>.morph-description {
+    color: var(--text-color);
+}
+
+
 #morph-wrapper>.morph-shape:nth-child(2)>.morph-content>.morph-non-title>.morph-button {
     background-color: var(--morph-color-2);
+    color: var(--text-color);
+    border-color: var(--text-color);
 }
+
+#morph-wrapper>.morph-shape:nth-child(2)>.morph-content>.morph-non-title>.morph-button:hover {
+    border-color: var(--bg-color);
+}
+
+#morph-wrapper>.morph-shape:nth-child(2)>.morph-content>.morph-non-title>.morph-description {
+    color: var(--text-color);
+}
+
 
 #morph-wrapper>.morph-shape:nth-child(3)>.morph-content>.morph-non-title>.morph-button {
     background-color: var(--morph-color-3);
+    color: var(--bg-color);
+    border-color: var(--bg-color);
 }
+
+#morph-wrapper>.morph-shape:nth-child(3)>.morph-content>.morph-non-title>.morph-button:hover {
+    border-color: var(--text-color);
+}
+
+#morph-wrapper>.morph-shape:nth-child(3)>.morph-content>.morph-non-title>.morph-description {
+    color: var(--bg-color);
+}
+
 
 #morph-wrapper>.morph-shape:nth-child(4)>.morph-content>.morph-non-title>.morph-button {
     background-color: var(--morph-color-4);
+    color: var(--bg-color);
+    border-color: var(--bg-color);
 }
+
+#morph-wrapper>.morph-shape:nth-child(4)>.morph-content>.morph-non-title>.morph-button:hover {
+    border-color: var(--text-color);
+}
+
+#morph-wrapper>.morph-shape:nth-child(4)>.morph-content>.morph-non-title>.morph-description {
+    color: var(--bg-color);
+}
+
 
 #morph-wrapper>.morph-shape:nth-child(5)>.morph-content>.morph-non-title>.morph-button {
     background-color: var(--morph-color-5);
+    color: var(--text-color);
+    border-color: var(--text-color);
 }
+
+#morph-wrapper>.morph-shape:nth-child(5)>.morph-content>.morph-non-title>.morph-button:hover {
+    border-color: var(--bg-color);
+}
+
+#morph-wrapper>.morph-shape:nth-child(5)>.morph-content>.morph-non-title>.morph-description {
+    color: var(--text-color);
+}
+
 
 .morph-description {
     font-size: 1.5rem;

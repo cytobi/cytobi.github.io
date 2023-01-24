@@ -33,13 +33,13 @@ function toProject(id: number) {
         window.location.href = 'https://cytobi.tumblr.com/';
     }
     if (id === 1) {
-        page.value = "WipBody"
+        page.value = "Projects"
     }
     if (id === 2) {
         page.value = "MouseSpeed"
     }
     if (id === 3) {
-        page.value = "Placeholder"
+        page.value = "WipBody"
     }
     if (id === 4) {
         page.value = "AboutMe"
