@@ -13,6 +13,7 @@
         <mouse-speed v-if="page === 'MouseSpeed'" />
         <morphing-shapes @page="(n) => { toProject(n) }" @clicked-something="nothingClicked = false"
             v-if="page === 'MorphingShapes'" />
+        <tmwt-calc v-if="page === 'TmwtCalc'" />
     </el-container>
 </template>
 
@@ -25,6 +26,7 @@ import { ElNotification } from 'element-plus'
 import MorphingShapes from './menus/MorphingShapes.vue';
 import WipBody from './WipBody.vue';
 import MouseSpeed from './webapps/MouseSpeed.vue';
+import TmwtCalc from './webapps/TmwtCalc.vue';
 
 const page = ref("MorphingShapes")
 var displayHeader = computed(() => page.value !== "MorphingShapes")
@@ -39,7 +41,7 @@ function toProject(id: number) {
         page.value = "Projects"
     }
     if (id === 2) {
-        page.value = "MouseSpeed"
+        page.value = "TmwtCalc"
     }
     if (id === 3) {
         page.value = "WipBody"
